@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Technical Documentation</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+<nav id="navbar">
+  <header>C++ Lambda Expressions</header>
+  <a href="#Introduction" class="nav-link">Introduction</a>
+  <a href="#Capture_Clause" class="nav-link">Capture Clause</a>
+  <a href="#Parameter_List" class="nav-link">Parameter List</a>
+  <a href="#Special_Specifications" class="nav-link">Special Specifications</a>
+  <a href="#Return_Type" class="nav-link">Return Type</a>
+  <a href="#Lambda_Body" class="nav-link">Lambda Body</a>
+</nav>
+
+
+<main id="main-doc">
+  <section class="main-section" id="Introduction">
+    <header>Introduction</header>
+    <p class="main-paragraph">In C++11 and later, a lambda expression—often called a <em>lambda</em>—is a convenient way of defining an anonymous function object (a <em>closure</em>) right at the location where it is invoked or passed as an argument to a function. Typically lambdas are used to encapsulate a few lines of code that are passed to algorithms or asynchronous methods.</p>
+    <p class="main-paragraph">The following illustration shows the structure of a lambda:</p>
+    <p class="main-paragraph">
+      <img src="https://docs.microsoft.com/de-de/cpp/cpp/media/lambdaexpsyntax.png?view=vs-2019">
+    </p>
+    <ol class="main-list">
+      <li><em>Capture Clause</em> (Also known as the lambda-introducer in the C++ specification.)</li>
+      <li><em>Parameter List</em> Optional. (Also known as the lambda declarator)</li>
+      <li><em>Mutable Specification</em></li>
+      <li><em>Exception Specification</em></li>
+      <li><em>Trailing Return Type</em> Optional</li>
+      <li><em>Lambda Body</em></li>
+    </ol>
+  </section>
+  
+  <section class="main-section" id="Capture_Clause">
+    <header>Capture Clause</header>
+    <p class="main-paragraph">
+      A lambda can introduce new variables in its body (in <b>C++14</b>), and it can also access, or <em>capture</em>, variables from the surrounding scope. A lambda begins with the capture clause (<em>lambda-introducer</em> in the Standard syntax), which specifies which variables are captured, and whether the capture is by value or by reference. Variables that have the ampersand <span class="symbol">(&)</span> prefix are accessed by reference and variables that do not have it are accessed by value.
+    </p>
+    <p class="main-paragraph">
+      An empty capture clause, <span class="symbol">[ ]</span>, indicates that the body of the lambda expression accesses no variables in the enclosing scope.
+    </p>
+    <p class="main-paragraph">
+      You can use the default capture mode (<em>capture-default</em> in the Standard syntax) to indicate how to capture any outside variables that are referenced in the lambda: <span class="symbol">[&]</span> means all variables that you refer to are captured by reference, and <span class="symbol">[=]</span> means they are captured by value. You can use a default capture mode, and then specify the opposite mode explicitly for specific variables. For example, if a lambda body accesses the external variable <span class="symbol">total</span> by reference and the external variable <span class="symbol">factor</span> by value, then the following capture clauses are equivalent:
+    <pre><code>  [&total, factor]
+  [factor, &total]
+  [&, factor]
+  [factor, &]
+  [=, &total]
+  [&total, =]</code></pre>
+    </p>
+    <p class="main-paragraph">Only variables that are mentioned in the lambda are captured when a capture-default is used.
+    </p>
+      <p class="main-paragraph">If a capture clause includes a capture-default <span class="symbol">&</span>, then no <span class="symbol">identifier</span> in a <span class="symbol">capture</span> of that capture clause can have the form & identifier. Likewise, if the capture clause includes a capture-default <span class="symbol">=</span>, then no <span class="symbol">capture</span> of that capture clause can have the form <span class="symbol">= identifier</span>. An identifier or this cannot appear more than once in a capture clause. The following code snippet illustrates some examples.
+        <pre><code>  struct S { void f(int i); };
+
+  void S::f(int i) {
+    [&, i]{};      // OK
+    [&, &i]{};     // ERROR: i preceded by & when & is the default
+    [=, this]{};   // ERROR: this when = is the default
+    [=, *this]{ }; // OK: captures this by value. See below.
+    [i, i]{};      // ERROR: i repeated
+  }</code></pre></p>
+  <p class="main-paragraph">
+    To use lambda expressions in the body of a class method, pass the <b>this</b> pointer to the capture clause to provide access to the methods and data members of the enclosing class.
+</p>
+<p class="main-paragraph">
+  When you use the capture clause, we recommend that you keep these points in mind, particularly when you use lambdas with multithreading:
+</p>
+<ul class="main-list">
+  <li>Reference captures can be used to modify variables outside, but value captures cannot. (<b>mutable</b> allows copies to be modified, but not originals.)</li>
+  <li>Reference captures reflect updates to variables outside, but value captures do not.</li>
+  <li>Reference captures introduce a lifetime dependency, but value captures have no lifetime dependencies. This is especially important when the lambda runs asynchronously. If you capture a local by reference in an async lambda, that local will very possibly be gone by the time the lambda runs, resulting in an access violation at run time.</li>
+</ul>
+<p class="main-paragraph">
+  In C++14, you can introduce and initialize new variables in the capture clause, without the need to have those variables exist in the lambda function’s enclosing scope. The initialization can be expressed as any arbitrary expression; the type of the new variable is deduced from the type produced by the expression. One benefit of this feature is that in C++14 you can capture move-only variables (such as std::unique_ptr) from the surrounding scope and use them in a lambda.
+</p>
+  </section>
+  
+  <section class="main-section" id="Parameter_List">
+    <header>Parameter List</header>
+    <p class="main-paragraph">
+      In addition to capturing variables, a lambda can accept input parameters. A parameter list (<em>lambda declarator</em> in the Standard syntax) is optional and in most aspects resembles the parameter list for a function.
+    </p>
+    <p class="main-paragraph">
+      In <b>C++ 14</b>, if the parameter type is generic, you can use the auto keyword as the type specifier. This tells the compiler to create the function call operator as a template. Each instance of auto in a parameter list is equivalent to a distinct type parameter.
+    </p>
+    <pre><code>  auto y = [] (auto first, auto second)
+  {
+    return first + second;
+  };</code></pre>
+    <p class="main-paragraph">
+      A lambda expression can take another lambda expression as its argument. For more information, see "Higher-Order Lambda Expressions" in the topic <a target="_blank" href="https://docs.microsoft.com/de-de/cpp/cpp/examples-of-lambda-expressions?view=vs-2019">Examples of Lambda Expressions</a>.
+    </p>
+  </section>
+  
+  <section class="main-section" id="Special_Specifications">
+    <header>Special Specifications</header>
+    <p class="main-paragraph">
+      Typically, a lambda's function call operator is const-by-value, but use of the <b>mutable</b> keyword cancels this out. It does not produce mutable data members. The mutable specification enables the body of a lambda expression to modify variables that are captured by value. Some of the examples later in this article show how to use <b>mutable</b>.
+    </p>
+    <p class="main-paragraph">
+      You can use the <span class="symbol">noexcept</span> exception specification to indicate that the lambda expression does not throw any exceptions. As with ordinary functions, the Microsoft C++ compiler generates warning <a href="https://docs.microsoft.com/de-de/cpp/error-messages/compiler-warnings/compiler-warning-level-1-c4297?view=vs-2019" target="_blank">C4297</a> if a lambda expression declares the <span class="symbol">noexcept</span> exception specification and the lambda body throws an exception, as shown here:
+    <pre><code>  // throw_lambda_expression.cpp
+  // compile with: /W4 /EHsc
+  int main() // C4297 expected
+  {
+    []() noexcept { throw 5; }();
+  }</code></pre>
+    </p>
+    <p class="main-paragraph">
+      For more information, see <a href="https://docs.microsoft.com/de-de/cpp/cpp/exception-specifications-throw-cpp?view=vs-2019" target="_blank">Exception Specifications (throw)</a>.
+</p>
+  </section>
+  
+  <section class="main-section" id="Return_Type">
+    <header>Return Type</header>
+    <p class="main-paragraph">
+      The return type of a lambda expression is automatically deduced. You don't have to use the <a href="https://docs.microsoft.com/de-de/cpp/cpp/auto-cpp?view=vs-2019" target="_blank">auto</a> keyword unless you specify a <em>trailing-return-type</em>. The <em>trailing-return-type</em> resembles the return-type part of an ordinary method or function. However, the return type must follow the parameter list, and you must include the trailing-return-type keyword <span class="symbol">-></span> before the return type.
+    </p>
+    <p class="main-paragraph">
+      You can omit the return-type part of a lambda expression if the lambda body contains just one return statement or the expression does not return a value. If the lambda body contains one return statement, the compiler deduces the return type from the type of the return expression. Otherwise, the compiler deduces the return type to be <b>void</b>. Consider the following example code snippets that illustrate this principle.
+    </p>
+    <pre><code>  auto x1 = [](int i){ return i; }; // OK: return type is int
+  auto x2 = []{ return{ 1, 2 }; };  // ERROR: return type is void, deducing
+                                    //return type from braced-init-list is invalid</code></pre>
+  </section>
+  
+  <section class="main-section" id="Lambda_Body">
+    <header>Lambda Body</header>
+    <p class="main-paragraph">The lambda body (<em>compound-statement</em> in the Standard syntax) of a lambda expression can contain anything that the body of an ordinary method or function can contain. The body of both an ordinary function and a lambda expression can access these kinds of variables:
+    </p>
+    <ul class="main-list">
+      <li>Captured variables from the enclosing scope, as described previously.</li>
+      <li>Parameters</li>
+      <li>Locally-declared variables</li>
+      <li>Class data members, when declared inside a class and <b>this</b> is captured</li>
+      <li>Any variable that has static storage duration—for example, global variables</li>
+    </ul>
+  <p class="main-paragraph">
+    The following example contains a lambda expression that explicitly captures the variable <span class="symbol">n</span> by value and implicitly captures the variable <span class="symbol">m</span> by reference:
+      </p>
+  <pre><code>  // captures_lambda_expression.cpp
+  // compile with: /W4 /EHsc
+  #include <iostream>
+  using namespace std;
+
+  int main()
+  {
+    int m = 0;
+    int n = 0;
+    [&, n] (int a) mutable { m = ++n + a; }(4);
+    cout << m << endl << n << endl;
+  }</code></pre>
+  <p class="main-paragraph">
+  Because the variable <span class="symbol">n</span> is captured by value, its value remains <span class="symbol">0</span> after the call to the lambda expression. The <b>mutable</b> specification allows <span class="symbol">n</span> to be modified within the lambda.
+  </p>
+  </section>
+</main>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
