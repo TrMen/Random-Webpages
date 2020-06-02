@@ -1,0 +1,67 @@
+#survey{
+  display: block;
+  margin: auto 30%;
+  background-color: hsla(149, 0%, 10%, 0.6);
+  border-radius: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+label{
+  text-align: left;
+  display: grid;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+input, select{
+  border-radius: 5px;
+  height: 30px;
+}
+#survey-content{
+  margin: 30px 8%;
+}
+#survey-form{
+  display: flex;
+  flex-direction: column;
+}
+body{
+  text-align: center;
+  background: url("https://apod.nasa.gov/apod/image/1212/ngc6188Kfir2000.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  color: hsla(149, 0%, 95%, 1);
+}
+#description, #title{
+  font-style: italic;
+  margin: 30px 30%;
+}
+#best-side{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px groove;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+#checkboxes-div{
+  display: flex;
+  flex-direction: column;
+}
+#checkboxes-div > label{
+  display: inline;
+}
+input[type='checkbox']{
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: bottom;
+}
+#additional-comments{
+  border-radius: 5px;
+}
+#submit{
+  height: 33px;
+  background-color: hsla(129, 72%, 25%, 0.83);
+  color: hsla(149, 0%, 95%, 1);
+  border-radius: 5px;
+}
