@@ -1,0 +1,128 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+body, html{
+  scroll-behavior: smooth;
+}
+a{
+  text-decoration: none;
+  color: #EDE2E4;
+}
+img{
+  display: block;
+}
+h1{
+  color: #F0F0F0;
+  font-size: 60px;
+  margin-bottom: 0;
+}
+h2{
+  font-style: italic;
+  font-size: 30px;
+  color: #b72438;
+}
+/*------------------------------*/
+#page-header{
+  width: 100%;
+  height: 10vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #90313e;
+  border-bottom: 1px solid black;
+}
+#navbar{
+  float: right;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  width: 40%;
+  justify-content: space-around;
+}
+#navbar > a{
+  color: #EDE2E4;
+  font-size: 30px;
+}
+#navbar > a:hover{
+  color: #220c0f;
+}
+/*------------------------------*/
+section{
+  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 10vh;
+  box-sizing: border-box;
+}
+#welcome-section{
+  background: #28292B;
+  padding-top: 25vh;
+}
+/*------------------Projects section------------------*/
+#projects{
+  background: #45567D;
+  padding-bottom: 100px;
+}
+#projects-header{
+  color: #F0F0F0;
+  max-width: 40%;
+  margin: 1em auto;
+  font-style: normal;
+  padding-bottom: 0.2em;
+  border-bottom: 2px solid #F0F0F0;
+  font-size: 45px;
+}
+#projects-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 3em;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1em;
+  padding-bottom: 5em;
+}
+.project-tile{
+  box-shadow: 1px 0px 5px 2px #1d2435;
+  overflow: hidden;
+}
+.hyperlink-icon{
+  display: inline;
+  vertical-align: bottom;
+  font-size: 0;
+  width: 5%;
+  padding: 0 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+.project-tile:hover .hyperlink-icon{
+  opacity: 1;
+}
+.project-image{
+  width: 100%;
+  min-height: 300px;
+  border-radius: 3px;
+  object-fit: cover;
+}
+.project-name{
+  background: #303841;
+  color: #F0F0F0;
+  text-align: center;
+  padding: 1em;
+  border-radius: 3px;
+}
+
+#profile-link{
+  text-align: center;
+  padding: 1.5em 3em;
+  background: #303841;
+  color: #F0F0F0;
+  margin-top: 4em;
+  transition: background 0.3s ease-out;
+}
+
+#profile-link:hover{
+  background: #90313E;
+}
