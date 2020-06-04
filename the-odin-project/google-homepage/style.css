@@ -1,0 +1,140 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: underline;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  font-size: 3vw;
+  font-family: arial, sans-serif;
+  opacity: 0.75;
+}
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+#nav-left {
+  float: left;
+  width: 30%;
+}
+#nav-right {
+  float: right;
+  width: 40%;
+}
+nav > img {
+  height: 60%;
+}
+#profile-icon {
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4vh;
+  height: 6vh;
+  width: 6vh;
+}
+html,
+body {
+  height: 100%;
+}
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#google-logo {
+  width: 30%;
+  margin-bottom: 3vh;
+}
+#search-bar {
+  border: 1px solid rgb(223, 225, 229);
+  border-radius: 24px;
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5vh;
+}
+#search-bar:hover {
+  box-shadow: rgba(32, 33, 36, 0.28) 0px 1px 6px 0px;
+}
+form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#magnifying-glass-icon {
+  margin-left: 0.5em;
+  height: 80%;
+}
+#microphone-icon {
+  height: 80%;
+  margin-right: 0.5em;
+}
+#search-input,
+#search-input:focus {
+  border: none;
+  outline: none;
+  width: 75%;
+  font-size: 2vh;
+}
+#btns {
+  width: 100%;
+  text-align: center;
+}
+#btns > input {
+  background: #f4f4f4;
+  border: none;
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 0.7vh 1.2vw;
+  font-size: 2vh;
+  opacity: 0.7;
+  margin: 0 0.5vw;
+  border: 1px solid #f4f4f4;
+}
+#btns > input:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #c6c6c6;
+  box-sizing: content-box;
+}
+footer {
+  position: fixed;
+  left: 0;
+  top: calc(100% - 10vh);
+  width: 100%;
+  font-size: 2vw;
+}
+#footer-upper,
+#footer-lower {
+  background: #f2f2f2;
+  height: 5vh;
+  border-top: 1px solid rgb(228, 228, 228);
+  width: 100%;
+}
+#lower-right {
+  float: right;
+  width: 40%;
+}
+#lower-left {
+  float: left;
+  width: 50%;
+}
