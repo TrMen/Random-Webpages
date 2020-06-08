@@ -16,6 +16,7 @@ module.exports = {
   },
   rules: {
   "no-use-before-define": ["error", { "variables": false }],
-  "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+  "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+  "linebreak-style": ["error", "windows"]
   },
 };
