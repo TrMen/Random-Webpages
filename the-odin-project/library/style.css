@@ -1,0 +1,166 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    background: #E1DCC5;
+}
+.no-transitions{
+    transition: none !important;
+}
+#title-header{
+    position: relative;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    border-bottom: 1px solid black;
+}
+h1{
+    position: relative;
+    color: white;
+    font-size: 35px;
+}
+#title-header:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(http://public.media.smithsonianmag.com/legacy_blog/06_17_2013_book-smell.jpg);
+    filter: blur(2px);
+}
+section{
+    width: 100%;
+    display: flex;
+}
+#new-book{
+    border-right: 1px solid black;
+}
+#page-wrapper{
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    flex-grow: 0;
+    margin: 0 auto;
+    align-items: center;
+    border: 1px solid black;
+    border-top: none;
+}
+.new-btn{
+    border: none;
+    border-bottom: 1px solid black;
+    width: 50%;
+    height: 50px;
+}
+.new-btn:hover{
+    background: rgb(155, 155, 155);
+}
+#header{
+    position: relative;
+}
+
+/*---------Creation forms-------------*/
+.creation-form{
+    position: absolute;
+    top: 55px;
+    left: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 1px 1px 8px 2px black;
+    background: linear-gradient(225deg, rgb(0, 183, 255), rgb(37, 255, 230));
+    transform: scale(0);
+    transition: all 0.5s ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+    height: 400px;
+    padding-left: 5px;
+}
+.form-visible{
+    transform: scale(1) !important;
+}
+.creation-title{
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+.creation-input{
+    float: right;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    background: rgb(236, 236, 235);
+}
+.creation-btn{
+    margin: 0px 10px;
+    border-radius: 0px;
+    border: 1px solid black;
+    width: calc(50% - 20px);
+    padding: 5px 10px;
+}
+#cancel-book, #cancel-category{
+    background: rgb(248, 120, 120);
+}
+#create-book, #create-category{
+    background: rgb(167, 248, 120);
+}
+
+/*---------library------*/
+#library{
+    display: flex;
+    flex-direction: column;
+}
+/*--------categories and books-------------*/
+.category{
+    font-size: 30px;
+    padding: 3px 0;
+    text-decoration: underline;
+    background: #496196;
+    text-align: center;
+    color: #FFFFFF;
+}
+.book-list{
+    display: flex;
+    font-size: 20px;
+    overflow: scroll;
+    overflow-y: hidden;
+}
+.book-btn{
+    width: 50%;
+    height: 20px;
+    border: none;
+}
+.book{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    min-width: 300px;
+    margin-right: 10px;
+    color: rgb(17, 63, 148);
+    padding: 0 5px;
+}
+
+/*----category form----*/
+#new-category-form{
+    height: 200px;
+    left: calc(50% + 5px);
+}
+button:focus{
+    outline: none;
+}
+.delete-category{
+    float: right;
+    height: 50%;
+    width: 100px;
+    background: rgb(248, 120, 120);
+    margin: 0px 10px;
+    border-radius: 0px;
+    padding: 5px 10px;
+    border: 1px solid black;
+}
