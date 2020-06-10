@@ -1,0 +1,141 @@
+html{
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: rgb(232, 251, 255);
+}
+button:focus, input:focus{
+    outline: none;
+}
+#player-choice{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 100px);
+    background: rgba(0, 0, 0, 0.692);
+    text-align: center;
+    padding-top: 100px;
+    align-items: center;
+    color: white;
+    font-size: 50px;
+}
+#player-x-label{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+#player-o-label{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}
+#middle{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.name-input{
+    margin-top: 30px;
+    height: 100px;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 10px;
+    border: none;
+}
+#ready-button{
+    padding: 20px 30px;
+    font-size: 40px;
+    border-radius: 10px;
+    margin-top: 50vh;
+    border: 1px solid black;
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+    color: #4e4845;
+}
+h2{
+    text-align: center;
+    color: #802222;
+    font-style: italic;
+}
+#winner-display{
+    font-size: 30px;
+    text-align: center;
+    color: rgb(4, 0, 255);
+}
+.winner-declared{
+    color: rgb(160, 14, 14) !important;
+}
+.player-display{
+    margin-top: 50px;
+    height: 300px;
+    width: 500px;
+    margin-top: 100px;
+    font-size: 30px;
+    text-align: center;
+    box-shadow: 0 0 8px 5px white inset;
+}
+.players-turn{
+    background: rgba(0, 107, 36, 0.384);
+}
+
+#ready-button:hover{
+    background: rgb(143, 30, 30);
+}
+
+.hidden{
+    display: none;
+}
+
+#game-board{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+    background: gray;
+    height: 500px;
+    width: 500px;
+    margin: 50px auto;
+    border: 1px solid black;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.644);
+}
+
+.game-tile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    background: rgb(134, 99, 99);
+}
+.game-tile:hover{
+        background: rgb(92, 68, 68);
+}
+#buttons{
+    margin: 0 auto;
+    width: 700px;
+}
+#start, #select-names{
+    padding: 20px 40px;
+    font-size: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.644);
+}
+#start:hover, #select-names:hover{
+    background: rgba(128, 128, 128, 0.493);
+}
+#start{
+    float: left;
+}
+#select-names{
+    float: right;
+}

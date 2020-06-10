@@ -1,3 +1,4 @@
+
 function Book(category, title, author, pages, read) {
   if (!(this instanceof Book)) return new Book(title, author, pages, read);
   this.category = category || 'Misc';

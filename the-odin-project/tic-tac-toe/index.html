@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+    <script defer type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="player-choice">
+        <h3>Enter your names, players</h3>
+        <label for="player-x" id="player-x-label">Marker X
+            <input type="text" id="player-x" class="name-input" placeholder="Enter your Name">
+        </label>
+        <label for="player-x" id="player-o-label">Marker O
+            <input type="text" id="player-o" class="name-input" placeholder="Enter your Name">
+        </label>
+        <button type="button" id="ready-button">Ready</button>
+    </div>
+    <header>
+        <h1>Tic-Tac-Toe</h1>
+        <div id="winner-display">Game Ongoing</div>
+    </header>
+    <main>
+        <div id="middle">
+            <div id="player-x-display" class="player-display">
+                <p>Player: <span class="name"></span></p>
+                <p>Using marker X</p>
+                <p>Wins: <span class="wins"></span></p>
+            </div>
+            <div id="game-board">
+                <div class="game-tile" data-index="0"></div>
+                <div class="game-tile" data-index="1"></div>
+                <div class="game-tile" data-index="2"></div>
+                <div class="game-tile" data-index="3"></div>
+                <div class="game-tile" data-index="4"></div>
+                <div class="game-tile" data-index="5"></div>
+                <div class="game-tile" data-index="6"></div>
+                <div class="game-tile" data-index="7"></div>
+                <div class="game-tile" data-index="8"></div>
+            </div>
+            <div id="player-o-display" class="player-display">
+                <p>Player: <span class="name"></span></p>
+                <p>Using marker O</p>
+                <p>Wins: <span class="wins"></span></p>
+            </div>
+        </div>
+        </div>
+        <div id="buttons">
+            <button type="button" id="start">Start Game</button>
+            <button type="button" id="select-names">Select new Player Names</button>
+        </div>
+    </main>
+</body>
