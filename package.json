@@ -1,0 +1,25 @@
+{
+  "name": "projects",
+  "version": "1.0.0",
+  "description": "A collection of different webpages designed by me. I use these webpages to learn HTML, CSS and eventually JS. \r These will mostly be based on https://www.freecodecamp.org and https://www.theodinproject.com .",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TrMen/Random-Webpages.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TrMen/Random-Webpages/issues"
+  },
+  "homepage": "https://github.com/TrMen/Random-Webpages#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}

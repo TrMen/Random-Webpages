@@ -1,11 +1,12 @@
 
-function Book(category, title, author, pages, read) {
-  if (!(this instanceof Book)) return new Book(title, author, pages, read);
-  this.category = category || 'Misc';
-  this.title = title || 'No title given';
-  this.author = author || 'No author given';
-  this.pages = pages > 0 ? pages : 0;
-  this.read = read || false;
+class Book {
+  constructor(category, title, author, pages, read) {
+    this.category = category || 'Misc';
+    this.title = title || 'No title given';
+    this.author = author || 'No author given';
+    this.pages = pages > 0 ? pages : 0;
+    this.read = read || false;
+  }
 }
 
 function toggleRead(event) {
